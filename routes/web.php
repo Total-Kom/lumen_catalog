@@ -16,10 +16,13 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api'], function ($router) {
-	$router->get('categories', 'CategoryController@show_active');
+	$router->get('category/all', 'CategoryController@show_active');
+	$router->get('category/{id}/files', 'CategoryController@files_to');
+
+	$router->group(['middleware' => 'auth'], function($router){
+		$router->get('test', 'Controller@qwe');
+	});
 });
 
 
-$router->group(['middleware' => 'auth'], function($router){
-	$router->get('test', 'Controller@qwe');
-});
+
