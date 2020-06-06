@@ -21,7 +21,7 @@ class Category extends Model
      * @var array
      */
     protected $hidden = [
-        'deleted',
+        'deleted'
     ];
 
     static public function get_active()
@@ -29,7 +29,7 @@ class Category extends Model
         return Category::where('deleted', false)->get();
     }
 
-    static public function files_to($id)
+    static public function files_to(int $id)
     {
         $category_files = Category::find($id)->catalog;
         $result = Array();

@@ -28,5 +28,4 @@ class CatalogFiles extends Model
     {
         return $this->belongsTo('App\File', 'id_file');
     }
-
 };

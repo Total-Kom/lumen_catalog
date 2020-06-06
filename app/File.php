@@ -12,7 +12,7 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'downloading'
+        'name', 'downloading'
     ];
 
     /**
@@ -21,11 +21,11 @@ class File extends Model
      * @var array
      */
     protected $hidden = [
-        'deleted', 'path'
+        'id', 'deleted', 'path'
     ];
 
     public function catalog()
     {
-        return $this->belongsTo('App\CatalogFiles', 'id_category');
+        return $this->hasMany('App\CatalogFiles', 'id_category');
     }
 };
