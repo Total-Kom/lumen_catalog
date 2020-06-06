@@ -13,7 +13,7 @@ class CreateCatalogTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalog', function (Blueprint $table) {
+        Schema::create('catalog_files', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_user');
             $table->bigInteger('id_file');
@@ -29,6 +29,6 @@ class CreateCatalogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalog');
+        Schema::dropIfExists('catalog_files');
     }
 }
