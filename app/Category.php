@@ -28,4 +28,22 @@ class Category extends Model
     {
         return Category::where('deleted', false)->get();
     }
+
+    static public function files_to($id)
+    {
+        $category_files = Category::find($id)->catalog;
+        $result = Array();
+
+        foreach ($category_files as $key => $value)
+        {
+            array_push($result, $value->files);
+        }
+
+        return $result;
+    }
+
+    public function catalog()
+    {
+        return $this->hasMany('App\CatalogFiles', 'id_category');
+    }
 };
