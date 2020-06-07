@@ -13,7 +13,7 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'downloading'
+        'id', 'name', 'downloading', 'rating'
     ];
 
     /**
@@ -22,7 +22,7 @@ class File extends Model
      * @var array
      */
     protected $hidden = [
-        'deleted', 'path'
+        'deleted', 'path', 'updated_at'
     ];
 
     protected $appends = [

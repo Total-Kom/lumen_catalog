@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
             $table->string('name');
             $table->longText('path');
             $table->bigInteger('downloading')->default(0);
+            $table->timestamp('updated_at')->useCurrent();
             $table->boolean('deleted')->default(false);
         });
     }
