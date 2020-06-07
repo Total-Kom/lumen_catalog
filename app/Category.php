@@ -24,6 +24,31 @@ class Category extends Model
         'deleted'
     ];
 
+
+    protected $appends = [
+        'count_files', 'rating_files'
+    ];
+
+    public function getCountFilesAttribute()
+    {
+        $categoryFiles = Category::find($this->id)->catalog;
+        return count($categoryFiles);
+    }
+
+    public function getRatingFilesAttribute()
+    {
+        $categoryFiles = Category::find($this->id)->catalog;
+        $ratingFiles = 0;
+
+        foreach ($categoryFiles as $key => $value)
+        {
+            $ratingFiles += $value->rating;
+        }
+
+        return $ratingFiles;
+    }
+    
+
     static public function get_active()
     {
         return Category::where('deleted', false)->get();
@@ -31,11 +56,12 @@ class Category extends Model
 
     static public function files_to(int $id)
     {
-        $category_files = Category::find($id)->catalog;
+        $categoryFiles = Category::find($id)->catalog;
         $result = Array();
 
-        foreach ($category_files as $key => $value)
+        foreach ($categoryFiles as $key => $value)
         {
+            $value->files->rating = $value->rating;
             array_push($result, $value->files);
         }
 

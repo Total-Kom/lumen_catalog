@@ -25,13 +25,7 @@ class CategoryController extends Controller
         return response()->json(Category::files_to($id));
     }
 
-    public function insert_file(int $id)
-    {}
-
-    public function update_rating(int $id_category, int $id, int $num)
-    {}
-
-    public function update_file(int $id)
+    public function insert_file(Request $request, int $id)
     {}
 
     public function add_category_to_file(int $id, int $id_category)
