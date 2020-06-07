@@ -15,7 +15,7 @@ class FileController extends Controller
     public function __construct()
     {}
 
-    public function update_file_name(Request $request)
+    public function rename(Request $request)
     {
         $this->validate($request,   [
                                         'id' => 'required',
