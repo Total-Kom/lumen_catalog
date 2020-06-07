@@ -21,7 +21,6 @@ $router->group(['prefix' => 'api'], function ($router) {
 
 	$router->group(['middleware' => 'auth'], function($router){
 		$router->post('category/{id}/file/insert/', 'CategoryController@insert_file');
-		$router->options('/category/{id_category}/file/{id}/rating/{num}','CategoryController@update_rating');
 		$router->put('file/{id}/update/', 'CategoryController@update_file');
 		$router->put('file/{id}/add/category/{id_category}', 'CategoryController@add_category_to_file');
 	});
