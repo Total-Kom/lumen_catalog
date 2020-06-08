@@ -19,6 +19,8 @@ class CreateCatalogTable extends Migration
             $table->bigInteger('id_file');
             $table->bigInteger('id_category');
             $table->unsignedInteger('rating')->default(0);
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

@@ -25,9 +25,34 @@ class CategoryController extends Controller
         return response()->json(Category::files_to($id));
     }
 
-    public function insert_file(Request $request, int $id)
-    {}
+    public function insert_file(Request $request)
+    {
+        $this->validate($request,   [
+                                        'id_file' => 'required',
+                                        'id_category' => 'required'
+                                    ]);
 
-    public function add_category_to_file(int $id, int $id_category)
-    {}
+        $record = Category::add_file(auth()->user()->id,
+                                        $request->id_file,
+                                        $request->id_category);
+
+        if($record)
+        {
+            return response()->json($record, 200);
+        }
+
+        
+        return response('Found file: '.$request->id_file.' to category:'.$request->id_category, 403);
+        
+    }
+
+    public function delete_file(Request $request)
+    {
+        $record = Category::remove_file(auth()->user()->id,
+                                        $request->id_file,
+                                        $request->id_category);
+
+        $record->delete();
+        return "qwe";
+    }
 };
